@@ -1,0 +1,18 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 2222
+    onOpen: open-preview
+    visibility: public
+    name: ssh
+
+tasks:
+  - init: |
+      # (optional) update packages
+      sudo apt-get update
+  - command: |
+      # start sshd in background (so you can ssh into it if you pasted your key)
+      sudo /usr/sbin/sshd -D &
+      # keep a terminal open for convenience
+      bash
